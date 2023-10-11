@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour
 {
+    // 게임매니저가 완성되면 해당 스크립트에서 가져와서 쓸 것
+    public bool isGameOver = false; // 임시로 사용하는 게임오버 체크용 bool값
+
+
     // UI들을 관리할 스크립트
     // 싱글톤 사용
     private static UiManager m_instance;
@@ -32,6 +36,13 @@ public class UiManager : MonoBehaviour
     public Text scoreText; // 점수를 표시할 텍스트 오브젝트
     public Text bestScoreText; // 최고 점수 표시 텍스트
 
+    [Header("결과창 오브젝트")]
+    public GameObject resultObj;
+    public Text resultText;
+    public Text scoreResult;
+    public Text bestScoreResult;
+    public Text timeResult;
+
     // 싱글톤
     public static UiManager instance 
     {
@@ -56,11 +67,24 @@ public class UiManager : MonoBehaviour
 
     private void Update()
     {
-        Timer();
-      //  LimitTimer(); // 타이머를 남은 시간으로 쓸 경우를 대비해 만든 것입니다.
+        //게임오버 상태가 아닐 경우
+        if (isGameOver != true)
+        {
+            Timer();
+            //  LimitTimer(); // 타이머를 남은 시간으로 쓸 경우를 대비해 만든 것입니다.
 
-        if(Input.GetKeyDown(KeyCode.Escape)) // 키보드 esc를 누를 경우
-        { PauseGame(); } // 퍼즈 기능 사용
+            if (Input.GetKeyDown(KeyCode.Escape)) // 키보드 esc를 누를 경우
+            { PauseGame(); } // 퍼즈 기능 사용
+
+        }
+
+        //게임오버 상태일 경우 결과창 출력, 해당 창은 테스트 버전으로, 다른 방식으로 열릴 수 있음.
+        if (isGameOver == true)
+        {
+            GameResult();
+            return;
+        }
+
     }
 
     // 현재 진행된 시간 표시, 이후 if문으로 게임오버가 아닐 경우 추가할 것
@@ -125,8 +149,9 @@ public class UiManager : MonoBehaviour
         }
     }
 
-    // 게임 재시작 기능, 버튼의 OnClick에 해당하는 씬 이름을 '정확하게' 적을 것.
-    public void ReStart(string sceneName)
+    // 게임 재시작 기능, 버튼의 OnClick에 해당하는 씬 이름을 '정확하게' 적을 것. 
+    // 게임의 볼륨이 짧아서 적는 방식으로 했습니다만 이거 적는다고 더 길어짐...
+    public void SceneChange(string sceneName)
     {
         SceneManager.LoadScene(sceneName); // sceneName을 변경할 씬 이름에 맞게 적어줘야 함.
     }
@@ -135,5 +160,19 @@ public class UiManager : MonoBehaviour
     public void GameExit()
     {
         Application.Quit(); // 종료
+    }
+
+    // 게임 결과창에 나올 텍스트
+    public void GameResult() 
+    {
+        resultObj.SetActive(true); // 게임 오버 시 등장할 UI 오브젝트를 활성화
+        scoreResult.text = "최종 점수 : " + score.ToString(); // 최종 스코어 텍스트
+        bestScoreResult.text = "최고 점수 : " + bestScore.ToString(); // 최종 베스트 스코어 텍스트
+        timeResult.text = "진행 시간 : " + timeText.text; // 게임오버 시 시간 텍스트
+
+        if(isGameOver == true) // 게임오버 상태일 경우 탈출 실패, 아닐 경우 탈출 성공 텍스트가 나오도록 함
+        { resultText.text = "탈출 실패.."; }
+        else { resultText.text = "탈출 성공!!"; }
+
     }
 }
