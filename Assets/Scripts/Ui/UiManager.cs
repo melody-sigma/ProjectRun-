@@ -19,10 +19,16 @@ public class UiManager : MonoBehaviour
     private int minTime; // 분 표시
     private int secTime; // 초 표시
 
+    //스코어 표시 기능
+    private int score; // 표시될 스코어 변수
+    private int bestScore; // 저장될 최대 점수
+
 
     [Header("UI 오브젝트")]
     public Image pauseImage; // 일시정지 상태일 때 표시될 반투명한 이미지
     public Text timeText; // 타이머 변수를 나타낼 텍스트 오브젝트
+    public Text scoreText; // 점수를 표시할 텍스트 오브젝트
+    public Text bestScoreText;
 
 
     public static UiManager instance // 싱글톤
@@ -38,7 +44,13 @@ public class UiManager : MonoBehaviour
         }
     }
 
-
+    private void Awake()
+    {
+        bestScore = PlayerPrefs.GetInt("BestScore",0); // PlayerPrefs의 BestScore을 가져온다. 없을 경우 0
+        score = 0; // 게임 시작 시 점수를 0으로
+        time = 0; // 게임 시작 시 타이머를 0으로
+        AddScore(0);
+    }
 
     private void Update()
     {
@@ -56,7 +68,7 @@ public class UiManager : MonoBehaviour
 
     }
 
-    private void LimitTimer() // 남은 시간 표시
+    private void LimitTimer() // 남은 시간 표시 기능, 혹시나 써야할 경우를 대비해 미리 만들어둔 것.
     {
         limitTime -= Time.deltaTime; // 표시될 변수의 값을 감소
 
@@ -85,5 +97,22 @@ public class UiManager : MonoBehaviour
 
     }
 
+    public void AddScore(int _score) // 지정한 _score값만큼 점수 변수값 증가하는 기능
+    {
+        score += _score; // 지정한 int _score값만큼 score 변수값 증가
+        scoreText.text = score.ToString(); // 점수 텍스트의 텍스트를 score 수치로 변경
+        
+        BestScore(); // 현재 점수가 저장된 최고점수보다 높을 시 최고점수 갱신
 
+        bestScoreText.text = bestScore.ToString(); // 최고점수 텍스트 갱신
+    }
+
+    private void BestScore() // 현재 점수가 저장된 최고점수보다 높을 시 최고점수 갱신
+    {
+        if(score > bestScore) // score의 값이 bestScore보다 높을 경우
+        {
+            PlayerPrefs.SetInt("BestScore",score); // 최고값 갱신
+            bestScore = PlayerPrefs.GetInt("BestScore", 0); // 갱신된 값을 다시 bestScore에 넣어줌
+        }
+    }
 }

@@ -14,16 +14,12 @@ public class TitleManager : MonoBehaviour
     // 게임 스타트 기능 구현
     public void GameStart() // 버튼 클릭 시 메인 씬으로 이동하는 기능
     {
-
         SceneManager.LoadScene(mainScene); // 인스펙터에 적은 글자와 같은 씬으로 이동
-
     }
 
     public void GameExit() // 클릭 시 게임 종료 기능
     {
-
-        Application.Quit();
-
+        Application.Quit(); // 종료
     }
 
 }
