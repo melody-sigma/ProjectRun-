@@ -305,7 +305,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190181873}
   m_CullTransparentMesh: 1
---- !u!1 &870832626
+--- !u!1 &802856376
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -313,8 +313,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 870832628}
-  - component: {fileID: 870832627}
+  - component: {fileID: 802856378}
+  - component: {fileID: 802856377}
   m_Layer: 0
   m_Name: TitleManager
   m_TagString: Untagged
@@ -322,29 +322,31 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &870832627
+--- !u!114 &802856377
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 870832626}
+  m_GameObject: {fileID: 802856376}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31ff8bb267d041843ab2b5b463115db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainScene: Main
---- !u!4 &870832628
+  title: "\uAC8C\uC784 \uC2DC\uC791\uACFC \uC885\uB8CC \uBC84\uD2BC\uC5D0 \uB123\uB294
+    \uC6A9\uB3C4\uC785\uB2C8\uB2E4.\n\uAC8C\uC784\uC2DC\uC791 \uBC84\uD2BC\uC758
+    \uACBD\uC6B0 OnClick\uC5D0 \uC52C \uC774\uB984\uC744 \uC801\uC5B4\uC8FC\uC138\uC694"
+--- !u!4 &802856378
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 870832626}
+  m_GameObject: {fileID: 802856376}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 466.59192, y: 571.98755, z: -4.2288156}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -433,16 +435,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 870832627}
+      - m_Target: {fileID: 802856377}
         m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
         m_MethodName: GameStart
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Main
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1100544500
@@ -805,7 +807,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 870832627}
+      - m_Target: {fileID: 802856377}
         m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
         m_MethodName: GameExit
         m_Mode: 1
@@ -860,6 +862,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1477980059}
-  - {fileID: 870832628}
   - {fileID: 160096370}
   - {fileID: 1524964616}
+  - {fileID: 802856378}
