@@ -39,21 +39,10 @@ public class PlayerController : MonoBehaviour {
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();
     }
-    //삭제 플레이어 이동
-    public float moveSpeed = 5f;
-    //삭제
 
     private void Update() {
 
-        //삭제 플레이어 이동
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            // RightArrow 키를 누를 때 플레이어를 앞으로 이동시키는 로직
-            // 오른쪽 방향으로 움직이도록 설정합니다.
-            Vector3 moveDirection = Vector3.right * moveSpeed * Time.deltaTime;
-            transform.Translate(moveDirection);
-        }
-        //삭제
+        
 
         // 사망시 입력받지 않음
         if (isDead)
@@ -142,6 +131,7 @@ public class PlayerController : MonoBehaviour {
         {
             Die();
         }
+
         //과일
         if (other.CompareTag("Fruit"))
         {

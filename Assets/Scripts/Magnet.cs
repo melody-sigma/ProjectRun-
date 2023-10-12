@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Magnet : MonoBehaviour
 {
-    public float magnetForce = 20f; // 아이템을 플레이어로 끌어당기는 힘
-    public float magnetDuration = 7f; // Magnet 효과 지속 시간
+    public float magnetForce = 20f;
+    public float magnetDuration = 7f;
 
     private bool magnetActive = false;
     private float currentDuration = 0f;
