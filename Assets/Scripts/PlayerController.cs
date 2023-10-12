@@ -44,8 +44,9 @@ public class PlayerController : MonoBehaviour {
        {
            return;
        }
-       
-       if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2)
+
+       // 점프
+       if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2 && !isSliding)
        {
            jumpCount++;
            playerRigidbody.velocity = Vector2.zero;
