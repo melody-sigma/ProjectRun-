@@ -3,6 +3,7 @@
 // PlayerController는 플레이어 캐릭터로서 Player 게임 오브젝트를 제어한다.
 public class PlayerController : MonoBehaviour {
    public AudioClip deathClip; // 사망시 재생할 오디오 클립
+   public AudioClip SlidingClip;
    public float jumpForce = 300f; // 점프 힘
 
    private int jumpCount = 0; // 누적 점프 횟수
@@ -39,21 +40,10 @@ public class PlayerController : MonoBehaviour {
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();
     }
-    //삭제 플레이어 이동
-    public float moveSpeed = 5f;
-    //삭제
 
     private void Update() {
 
-        //삭제 플레이어 이동
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            // RightArrow 키를 누를 때 플레이어를 앞으로 이동시키는 로직
-            // 오른쪽 방향으로 움직이도록 설정합니다.
-            Vector3 moveDirection = Vector3.right * moveSpeed * Time.deltaTime;
-            transform.Translate(moveDirection);
-        }
-        //삭제
+        
 
         // 사망시 입력받지 않음
         if (isDead)
@@ -84,6 +74,9 @@ public class PlayerController : MonoBehaviour {
             isSliding = true;
             slideTimer = 0.0f;
             animator.SetBool("isSliding", true);
+
+            playerAudio.clip = SlidingClip;
+            playerAudio.Play();
         }
 
         // 슬라이딩 중이면 슬라이딩 지속 시간을 체크
@@ -96,6 +89,8 @@ public class PlayerController : MonoBehaviour {
             {
                 isSliding = false;
                 animator.SetBool("isSliding", false); // 슬라이딩 애니메이션 종료
+
+                playerAudio.Stop();
             }
 
             capsuleCollider.enabled = false;
@@ -143,6 +138,7 @@ public class PlayerController : MonoBehaviour {
         {
             Die();
         }
+
         //과일
         if (other.CompareTag("Fruit"))
         {

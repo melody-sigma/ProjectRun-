@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Magnet : MonoBehaviour
 {
-    public float magnetForce = 20f; // 아이템을 플레이어로 끌어당기는 힘
-    public float magnetDuration = 7f; // Magnet 효과 지속 시간
+    public float magnetForce = 20f;
+    public float magnetDuration = 5f;
+
+    public GameObject whiteCircle;
 
     private bool magnetActive = false;
     private float currentDuration = 0f;
@@ -18,7 +20,7 @@ public class Magnet : MonoBehaviour
     {
         circleCollider = GetComponent<CircleCollider2D>();
         spriteRenderer = GetComponent <SpriteRenderer>();
-        DeactivateMagnet(); // 게임 시작 시 비활성화
+        //DeactivateMagnet();
     }
 
     private void Update()
@@ -51,13 +53,14 @@ public class Magnet : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (magnetActive && (other.CompareTag("Coin") || other.CompareTag("Fruit")))
+        if (magnetActive && (other.CompareTag("Coin")))
         {
             Rigidbody2D itemRigidbody = other.GetComponent<Rigidbody2D>();
             if (itemRigidbody != null)
             {
                 Vector3 direction = (transform.position - other.transform.position).normalized;
-                itemRigidbody.AddForce(direction * magnetForce);
+                Vector2 force = direction * magnetForce;
+                itemRigidbody.velocity = force;
             }
         }
     }
@@ -68,15 +71,14 @@ public class Magnet : MonoBehaviour
         currentDuration = 0f;
         spriteRenderer.enabled = false; // 마그넷을 투명하게
         circleCollider.enabled = true; // 서클 콜라이더 활성화
+        whiteCircle.SetActive(true);
     }
 
     private void DeactivateMagnet()
     {
         magnetActive = false;
         currentDuration = 0f;
-        spriteRenderer.enabled = true; // 마그넷을 보이게
-        circleCollider.enabled = false; // 서클 콜라이더 비활성화
-        playerTransform = null; // 플레이어 위치 추적 종료
-        Destroy(gameObject, 2f); // 2초 후에 해당 마그넷 파괴
+        whiteCircle.SetActive(false);
+        Destroy(gameObject);
     }
 }
