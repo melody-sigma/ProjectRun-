@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
 
     public float maxHealth = 100f;
     public float currentHealth;
+
     //지속 데미지
     public float ContinuousDamage = 3f;
 
@@ -36,11 +37,24 @@ public class PlayerController : MonoBehaviour {
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();
     }
+    //삭제 플레이어 이동
+    public float moveSpeed = 5f;
+    //삭제
 
     private void Update() {
 
+        //삭제 플레이어 이동
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            // RightArrow 키를 누를 때 플레이어를 앞으로 이동시키는 로직
+            // 오른쪽 방향으로 움직이도록 설정합니다.
+            Vector3 moveDirection = Vector3.right * moveSpeed * Time.deltaTime;
+            transform.Translate(moveDirection);
+        }
+        //삭제
+
         // 사망시 입력받지 않음
-       if (isDead)
+        if (isDead)
        {
            return;
        }
@@ -112,14 +126,27 @@ public class PlayerController : MonoBehaviour {
         playerRigidbody.velocity = Vector2.zero;
         isDead = true;
     }
+    public void Heal(float amount)
+    {
+        currentHealth += amount;
+    }
 
-   private void OnTriggerEnter2D(Collider2D other) {
+        private void OnTriggerEnter2D(Collider2D other) {
         // Dead태그 상대와 충돌 시 사망
         if (other.tag == "Dead" && !isDead)
         {
             Die();
         }
 
+        if (other.CompareTag("Fruit"))
+        {
+            Fruit fruit = other.GetComponent<Fruit>();
+            if (fruit != null)
+            {
+                Heal(fruit.heal);
+                Destroy(other.gameObject);
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
