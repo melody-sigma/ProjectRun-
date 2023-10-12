@@ -24,10 +24,14 @@ public class UiManager : MonoBehaviour
     [SerializeField]private float limitTime; // 타이머 오브젝트에 표시될 남은시간 변수
     private int minTime; // 분 표시
     private int secTime; // 초 표시
+    private int bestMinTime; // 최대 시간 저장 - 분
+    private int bestSecTime; // 최대 시간 저장 - 초
 
     //스코어 표시 기능
     private int score; // 표시될 스코어 변수
     private int bestScore; // 저장될 최대 점수
+    
+    
 
 
     [Header("UI 오브젝트")]
@@ -42,6 +46,7 @@ public class UiManager : MonoBehaviour
     public Text scoreResult;
     public Text bestScoreResult;
     public Text timeResult;
+    public Text bestTimeText;
 
     // 싱글톤
     public static UiManager instance 
@@ -59,7 +64,15 @@ public class UiManager : MonoBehaviour
 
     private void Awake()
     {
+
+       
+
+
+
         bestScore = PlayerPrefs.GetInt("BestScore",0); // PlayerPrefs의 BestScore을 가져온다. 없을 경우 0
+        bestMinTime = PlayerPrefs.GetInt("BestMinTime", 0); // BestMinTime을 가져온다.
+        bestSecTime = PlayerPrefs.GetInt("BestSecTime", 0); // BestSecTime을 가져온다.
+
         score = 0; // 게임 시작 시 점수를 0으로
         time = 0; // 게임 시작 시 타이머를 0으로
         AddScore(0); // 시작하자마자 점수가 보여지기 위함
@@ -95,6 +108,10 @@ public class UiManager : MonoBehaviour
         minTime = (int)time / 60; // 분 표시
         secTime = (int)time % 60; // 초 표시
         timeText.text = minTime.ToString("00") + ":" + secTime.ToString("00");
+
+        BestTime();
+
+        bestTimeText.text = bestMinTime.ToString("00") + ":" + bestSecTime.ToString("00");
 
     }
 
@@ -155,6 +172,29 @@ public class UiManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName); // sceneName을 변경할 씬 이름에 맞게 적어줘야 함.
     }
+
+    // 가장 큰 생존시간을 저장
+    private void BestTime()
+    {
+ 
+        if(minTime > bestMinTime) // 현재 분이 기록된 최고 분보다 크면
+        {
+            PlayerPrefs.SetInt("BestSecTime", 0); // 기록된 최고 초를 0으로 변경
+            PlayerPrefs.SetInt("BestMinTime", minTime); // 현재 분을 최고 분으로 저장
+            bestMinTime = PlayerPrefs.GetInt("BestMinTime", 0); // 최고 분 변수를 기록된 최고 분으로 바꾼다
+            bestSecTime = PlayerPrefs.GetInt("BestSecTime",0); // 최고 초 변수를 기록된 0으로 바꾼다
+        }
+
+        if (minTime == bestMinTime && secTime > bestSecTime ) // 분이 최고 분이랑 같고 초가 최고 초보다 크면
+        {
+
+            PlayerPrefs.SetInt("BestSecTime", secTime); // 현재 초를 최고 초로 저장
+            bestSecTime = PlayerPrefs.GetInt("BestSecTime", 0); // 최고 초 변수를 기록된 최고 초로 변경
+        }
+
+
+    }
+
 
     // 클릭 시 게임 종료 기능
     public void GameExit()
