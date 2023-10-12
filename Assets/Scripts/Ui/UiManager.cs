@@ -49,6 +49,12 @@ public class UiManager : MonoBehaviour
     public Text timeResult;
     public Text bestTimeText;
 
+    [Header("최고기록창")]
+    public GameObject bestScoresObj;
+    public Text bestScorePause;
+    public Text bestTimePause;
+    
+
     // 싱글톤
     public static UiManager instance 
     {
@@ -78,6 +84,7 @@ public class UiManager : MonoBehaviour
     {
 
         HpSlider(); // 플레이어의 HP바 연동
+        BestScores();
         //게임오버 상태가 아닐 경우
         if (isGameOver != true)
         {
@@ -224,5 +231,23 @@ public class UiManager : MonoBehaviour
         playerHpSlider.value = playerController.currentHealth / playerController.maxHealth;
 
       
+    }
+
+
+    private void BestScores()
+    {
+        bestScorePause.text = "최고 점수 :  " + bestScore;
+        bestTimePause.text = "생존 시간 :  " + bestMinTime.ToString("00") + ":" + bestSecTime.ToString("00");
+
+
+        if (bestScoresObj.activeSelf == true && Input.anyKeyDown)
+        {
+            bestScoresObj.SetActive(false);
+
+
+
+        }
+
+
     }
 }

@@ -20,12 +20,16 @@ public class BackGroundScroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (UiManager.instance.isGameOver != true)
+        { 
         // 지정된 속도로 왼쪽으로 이동할 것.
         gameObject.transform.position += new Vector3(-1, 0, gameObject.transform.position.z) * moveSpeed * Time.deltaTime;
 
         if (gameObject.transform.position.x <= -x) // x값이 특정 수치에 도달하면
         {
             gameObject.transform.position = new Vector3(x, 0, 0); // 지정된 값으로 이동한다.
+        }
+
         }
     }
 }
