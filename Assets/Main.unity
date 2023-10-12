@@ -477,6 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathClip: {fileID: 8300000, guid: 668a107660fa54fe98e03b698a09aa49, type: 3}
+  SlidingClip: {fileID: 8300000, guid: 833b062d4a96f0a4e90f14a2e3174bff, type: 3}
   jumpForce: 300
   maxHealth: 100
   currentHealth: 0
