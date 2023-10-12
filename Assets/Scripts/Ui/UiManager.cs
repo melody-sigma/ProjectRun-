@@ -32,16 +32,16 @@ public class UiManager : MonoBehaviour
     private int bestScore; // 저장될 최대 점수
 
     [Header("Player Hp")]
-    public Slider playerHpSlider;
-    PlayerController playerController;
+    public Slider playerHpSlider; // ui에 적용할 슬라이더 오브젝트
+    private PlayerController playerController; // 가져올 hp를 구현한 스크립트
 
-    [Header("UI 오브젝트")]
+    [Header("UI 오브젝트")] // 기본적으로 보일 ui 오브젝트 삽입
     public Image pauseImage; // 일시정지 상태일 때 표시될 반투명한 이미지
     public Text timeText; // 타이머 변수를 나타낼 텍스트 오브젝트
     public Text scoreText; // 점수를 표시할 텍스트 오브젝트
     public Text bestScoreText; // 최고 점수 표시 텍스트
 
-    [Header("결과창 오브젝트")]
+    [Header("결과창 오브젝트")] // 결과창에서 보일 ui 오브젝트 삽입
     public GameObject resultObj;
     public Text resultText;
     public Text scoreResult;
@@ -65,11 +65,6 @@ public class UiManager : MonoBehaviour
 
     private void Awake()
     {
-
-       
-
-
-
         bestScore = PlayerPrefs.GetInt("BestScore",0); // PlayerPrefs의 BestScore을 가져온다. 없을 경우 0
         bestMinTime = PlayerPrefs.GetInt("BestMinTime", 0); // BestMinTime을 가져온다.
         bestSecTime = PlayerPrefs.GetInt("BestSecTime", 0); // BestSecTime을 가져온다.
@@ -81,23 +76,25 @@ public class UiManager : MonoBehaviour
 
     private void Update()
     {
+
+        HpSlider(); // 플레이어의 HP바 연동
         //게임오버 상태가 아닐 경우
         if (isGameOver != true)
         {
-            Timer();
+            Timer(); // 타이머 동작
             //  LimitTimer(); // 타이머를 남은 시간으로 쓸 경우를 대비해 만든 것입니다.
 
             if (Input.GetKeyDown(KeyCode.Escape)) // 키보드 esc를 누를 경우
             { PauseGame(); } // 퍼즈 기능 사용
 
-            HpSlider();
+            
         }
 
         //게임오버 상태일 경우 결과창 출력, 해당 창은 테스트 버전으로, 다른 방식으로 열릴 수 있음.
         if (isGameOver == true)
         {
-            Invoke("GameResult",3);
-            return;
+            Invoke("GameResult",3); // 3초가 지나면 게임결과창을 동작시킨다.
+            return; // 돌아간다
         }
 
     }
@@ -218,11 +215,14 @@ public class UiManager : MonoBehaviour
 
     }
 
-
+    // 플레이어 HP바 구현
     private void HpSlider()
     {
+        //지정해둔 변수 playerController를 게임오브젝트 Player의 스크립트 PlayerController로 지정
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        //이후 플레이어 hp 슬라이더의 value 값을 playerController의 현재 hp/ 최대hp로 설정
         playerHpSlider.value = playerController.currentHealth / playerController.maxHealth;
 
+      
     }
 }
