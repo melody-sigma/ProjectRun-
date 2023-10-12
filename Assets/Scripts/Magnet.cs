@@ -18,7 +18,7 @@ public class Magnet : MonoBehaviour
     {
         circleCollider = GetComponent<CircleCollider2D>();
         spriteRenderer = GetComponent <SpriteRenderer>();
-        DeactivateMagnet(); // 게임 시작 시 비활성화
+        //DeactivateMagnet();
     }
 
     private void Update()
@@ -74,9 +74,6 @@ public class Magnet : MonoBehaviour
     {
         magnetActive = false;
         currentDuration = 0f;
-        spriteRenderer.enabled = true; // 마그넷을 보이게
-        circleCollider.enabled = false; // 서클 콜라이더 비활성화
-        playerTransform = null; // 플레이어 위치 추적 종료
-        Destroy(gameObject, 2f); // 2초 후에 해당 마그넷 파괴
+        Destroy(gameObject);
     }
 }
