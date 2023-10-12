@@ -5,7 +5,8 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int coinValue = 100; // Coin 아이템의 점수
+    public int coinValue = 100;
+    public AudioClip coinGet;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -16,7 +17,19 @@ public class Coin : MonoBehaviour
             {
                 player.GetScore(coinValue);
             }
+
+            PlaycoinGet();
+
+
             Destroy(gameObject);
+        }
+    }
+
+    private void PlaycoinGet()
+    {
+        if (coinGet != null)
+        {
+            AudioSource.PlayClipAtPoint(coinGet, transform.position);
         }
     }
 }
