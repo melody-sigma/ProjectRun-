@@ -51,13 +51,14 @@ public class Magnet : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (magnetActive && (other.CompareTag("Coin") || other.CompareTag("Fruit")))
+        if (magnetActive && (other.CompareTag("Coin")))
         {
             Rigidbody2D itemRigidbody = other.GetComponent<Rigidbody2D>();
             if (itemRigidbody != null)
             {
                 Vector3 direction = (transform.position - other.transform.position).normalized;
-                itemRigidbody.AddForce(direction * magnetForce);
+                Vector2 force = direction * magnetForce;
+                itemRigidbody.velocity = force;
             }
         }
     }
