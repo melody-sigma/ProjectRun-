@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour {
     public float maxHealth = 100f;
     public float currentHealth;
 
+    public int score = 0;
+
     //지속 데미지
     public float ContinuousDamage = 3f;
 
@@ -126,18 +128,21 @@ public class PlayerController : MonoBehaviour {
         playerRigidbody.velocity = Vector2.zero;
         isDead = true;
     }
+    
+    // 회복
     public void Heal(float amount)
     {
         currentHealth += amount;
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
     }
 
-        private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other) {
         // Dead태그 상대와 충돌 시 사망
         if (other.tag == "Dead" && !isDead)
         {
             Die();
         }
-
+        //과일
         if (other.CompareTag("Fruit"))
         {
             Fruit fruit = other.GetComponent<Fruit>();
@@ -147,6 +152,14 @@ public class PlayerController : MonoBehaviour {
                 Destroy(other.gameObject);
             }
         }
+    }
+
+    public void GetScore(int amount)
+    {
+        score += amount;
+        //삭제
+        Debug.Log("Score: " + score);
+        //삭제
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
