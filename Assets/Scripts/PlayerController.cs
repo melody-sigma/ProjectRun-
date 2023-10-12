@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour {
 
         playerRigidbody.velocity = Vector2.zero;
         isDead = true;
+        UiManager.instance.isGameOver = true;
     }
 
    private void OnTriggerEnter2D(Collider2D other) {

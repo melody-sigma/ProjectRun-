@@ -30,9 +30,10 @@ public class UiManager : MonoBehaviour
     //스코어 표시 기능
     private int score; // 표시될 스코어 변수
     private int bestScore; // 저장될 최대 점수
-    
-    
 
+    [Header("Player Hp")]
+    public Slider playerHpSlider;
+    PlayerController playerController;
 
     [Header("UI 오브젝트")]
     public Image pauseImage; // 일시정지 상태일 때 표시될 반투명한 이미지
@@ -89,12 +90,13 @@ public class UiManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape)) // 키보드 esc를 누를 경우
             { PauseGame(); } // 퍼즈 기능 사용
 
+            HpSlider();
         }
 
         //게임오버 상태일 경우 결과창 출력, 해당 창은 테스트 버전으로, 다른 방식으로 열릴 수 있음.
         if (isGameOver == true)
         {
-            GameResult();
+            Invoke("GameResult",3);
             return;
         }
 
@@ -213,6 +215,14 @@ public class UiManager : MonoBehaviour
         if(isGameOver == true) // 게임오버 상태일 경우 탈출 실패, 아닐 경우 탈출 성공 텍스트가 나오도록 함
         { resultText.text = "탈출 실패.."; }
         else { resultText.text = "탈출 성공!!"; }
+
+    }
+
+
+    private void HpSlider()
+    {
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        playerHpSlider.value = playerController.currentHealth / playerController.maxHealth;
 
     }
 }
