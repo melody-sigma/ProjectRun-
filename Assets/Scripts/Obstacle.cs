@@ -35,6 +35,7 @@ public class Obstacle : MonoBehaviour
 
 
 
+
     private void MoveMonster()
     {
 
