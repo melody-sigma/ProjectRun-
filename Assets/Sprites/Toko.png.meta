@@ -1,31 +1,7 @@
 fileFormatVersion: 2
-guid: d7159a67a357942ef8404ce06e20db64
+guid: 5ab3f4869c0d8d34a999e9f15f2cbd09
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 21300000
-    second: Toko_Run_0
-  - first:
-      213: 21300002
-    second: Toko_Run_1
-  - first:
-      213: 21300004
-    second: Toko_Run_2
-  - first:
-      213: 21300006
-    second: Toko_Run_3
-  - first:
-      213: 21300008
-    second: Toko_Run_4
-  - first:
-      213: 21300010
-    second: Toko_Run_5
-  - first:
-      213: 21300012
-    second: Toko_Run_6
-  - first:
-      213: 21300014
-    second: Toko_Run_7
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -87,9 +63,9 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -106,10 +82,10 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -119,10 +95,10 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -132,10 +108,10 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Server
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -147,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Toko_Run_0
+      name: Toko_0
       rect:
         serializedVersion: 2
         x: 0
@@ -161,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24427fdbbe6cc024280500e9d329e6b9
-      internalID: 2066830158
+      spriteID: 4f83178737c252142b57916b79aa68a0
+      internalID: -726771630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Toko_Run_1
+      name: Toko_1
       rect:
         serializedVersion: 2
         x: 64
@@ -182,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d82da53549e2b64594b619f43f870ba
-      internalID: -1488951725
+      spriteID: 0d9ee69785e89c64394f67580353007d
+      internalID: 364532175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Toko_Run_2
+      name: Toko_2
       rect:
         serializedVersion: 2
         x: 128
@@ -203,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fb217eca16f39e41aad2d469f667355
-      internalID: 1679980130
+      spriteID: 5dbb55ed89869c244b08cdb743b6fe3a
+      internalID: 391249593
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Toko_Run_3
+      name: Toko_3
       rect:
         serializedVersion: 2
         x: 192
@@ -224,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c21b49074775d74b959b74f09a94b18
-      internalID: -1729309206
+      spriteID: 05ff3168245dd7541907f4d1d61c1c39
+      internalID: -2132971630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Toko_Run_4
+      name: Toko_4
       rect:
         serializedVersion: 2
         x: 256
@@ -245,71 +221,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ecec54eac7d7d249980a1cc5d949aec
-      internalID: -1888135680
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Toko_Run_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf59eebf1b6467243b49689268135595
-      internalID: 171988964
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Toko_Run_6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8ffada5316359fd42b2b4fb7a9c5d55c
-      internalID: 644216497
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Toko_Run_7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1705f62c50128eb4bbdf2cd55725879c
-      internalID: 321656050
+      spriteID: 81aed6e82f135b4429f2cbe59b80e2ac
+      internalID: -1855507927
       vertices: []
       indices: 
       edges: []
@@ -317,7 +230,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 139adb136fe054b6298073e9e290315a
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -325,14 +238,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Toko_Run_0: 2066830158
-      Toko_Run_1: -1488951725
-      Toko_Run_2: 1679980130
-      Toko_Run_3: -1729309206
-      Toko_Run_4: -1888135680
-      Toko_Run_5: 171988964
-      Toko_Run_6: 644216497
-      Toko_Run_7: 321656050
+      Toko_0: -726771630
+      Toko_1: 364532175
+      Toko_2: 391249593
+      Toko_3: -2132971630
+      Toko_4: -1855507927
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
