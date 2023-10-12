@@ -5,7 +5,9 @@ using UnityEngine;
 public class Magnet : MonoBehaviour
 {
     public float magnetForce = 20f;
-    public float magnetDuration = 7f;
+    public float magnetDuration = 5f;
+
+    public GameObject whiteCircle;
 
     private bool magnetActive = false;
     private float currentDuration = 0f;
@@ -69,12 +71,14 @@ public class Magnet : MonoBehaviour
         currentDuration = 0f;
         spriteRenderer.enabled = false; // 마그넷을 투명하게
         circleCollider.enabled = true; // 서클 콜라이더 활성화
+        whiteCircle.SetActive(true);
     }
 
     private void DeactivateMagnet()
     {
         magnetActive = false;
         currentDuration = 0f;
+        whiteCircle.SetActive(false);
         Destroy(gameObject);
     }
 }

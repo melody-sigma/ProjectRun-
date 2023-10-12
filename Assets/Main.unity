@@ -483,7 +483,6 @@ MonoBehaviour:
   currentHealth: 0
   score: 0
   ContinuousDamage: 3
-  moveSpeed: 5
 --- !u!95 &1129923835
 Animator:
   serializedVersion: 5
