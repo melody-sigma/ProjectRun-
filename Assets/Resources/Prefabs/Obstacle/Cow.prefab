@@ -9,8 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 259775889358320421}
-  - component: {fileID: 8221226688794845609}
   - component: {fileID: 912332095689426032}
+  - component: {fileID: 2157534369000054303}
+  - component: {fileID: -3175269476479794423}
+  - component: {fileID: -7944690843228362572}
   m_Layer: 6
   m_Name: Cow
   m_TagString: Untagged
@@ -34,21 +36,6 @@ Transform:
   - {fileID: 4678125095317870778}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &8221226688794845609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 96761990281282307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 390c9d1a06007b44ea96ea48647d4a76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 30
-  isMove: 1
-  moveSpeed: 7
 --- !u!61 &912332095689426032
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -94,6 +81,57 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.8658094, y: 3.8590884}
   m_EdgeRadius: 0
+--- !u!114 &2157534369000054303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96761990281282307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b677e02d85c8f2d45ac8ac83161f5b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3175269476479794423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96761990281282307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7256383f85f34345a80f7d7625e325f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &-7944690843228362572
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96761990281282307}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &390471357164001030
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +227,6 @@ GameObject:
   - component: {fileID: 4678125095317870778}
   - component: {fileID: 876263388763745743}
   - component: {fileID: 579557480447964982}
-  - component: {fileID: 9075742294879968842}
   m_Layer: 6
   m_Name: Bull-Minner-1
   m_TagString: Untagged
@@ -288,33 +325,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.9219227, y: 0.010000229}
   m_EdgeRadius: 0
---- !u!50 &9075742294879968842
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1475876254563997443}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 5
 --- !u!1 &3999657639011198279
 GameObject:
   m_ObjectHideFlags: 0
