@@ -317,6 +317,7 @@ MonoBehaviour:
   magnetForce: 30
   magnetDuration: 5
   whiteCircle: {fileID: 1259348284968545418}
+  magnet: {fileID: 2728006240087340224}
 --- !u!58 &2611244692483517526
 CircleCollider2D:
   m_ObjectHideFlags: 0

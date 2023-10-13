@@ -8,6 +8,7 @@ public class Magnet : MonoBehaviour
     public float magnetDuration = 5f;
 
     public GameObject whiteCircle;
+    public GameObject magnet;
 
     private bool magnetActive = false;
     private float currentDuration = 0f;
@@ -69,9 +70,11 @@ public class Magnet : MonoBehaviour
     {
         magnetActive = true;
         currentDuration = 0f;
-        spriteRenderer.enabled = false; // 마그넷을 투명하게
+        //spriteRenderer.enabled = false; // 마그넷을 투명하게
         circleCollider.enabled = true; // 서클 콜라이더 활성화
         whiteCircle.SetActive(true);
+        SpriteRenderer magnetRenderer = magnet.GetComponent<SpriteRenderer>();
+        magnetRenderer.enabled = false;
     }
 
     private void DeactivateMagnet()
