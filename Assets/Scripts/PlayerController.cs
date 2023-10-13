@@ -3,6 +3,7 @@
 // PlayerController는 플레이어 캐릭터로서 Player 게임 오브젝트를 제어한다.
 public class PlayerController : MonoBehaviour {
    public AudioClip deathClip; // 사망시 재생할 오디오 클립
+   public AudioClip SlidingClip;
    public float jumpForce = 300f; // 점프 힘
 
    private int jumpCount = 0; // 누적 점프 횟수
@@ -12,9 +13,14 @@ public class PlayerController : MonoBehaviour {
    private Rigidbody2D playerRigidbody; // 사용할 리지드바디 컴포넌트
    private Animator animator; // 사용할 애니메이터 컴포넌트
    private AudioSource playerAudio; // 사용할 오디오 소스 컴포넌트
+    public AudioClip hit;
+
 
     public float maxHealth = 100f;
     public float currentHealth;
+
+    public int score = 0;
+
     //지속 데미지
     public float ContinuousDamage = 3f;
 
@@ -39,13 +45,16 @@ public class PlayerController : MonoBehaviour {
 
     private void Update() {
 
+        
+
         // 사망시 입력받지 않음
-       if (isDead)
+        if (isDead)
        {
            return;
        }
-       
-       if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2)
+
+       // 점프
+       if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2 && !isSliding)
        {
            jumpCount++;
            playerRigidbody.velocity = Vector2.zero;
@@ -67,6 +76,9 @@ public class PlayerController : MonoBehaviour {
             isSliding = true;
             slideTimer = 0.0f;
             animator.SetBool("isSliding", true);
+
+            playerAudio.clip = SlidingClip;
+            playerAudio.Play();
         }
 
         // 슬라이딩 중이면 슬라이딩 지속 시간을 체크
@@ -79,6 +91,8 @@ public class PlayerController : MonoBehaviour {
             {
                 isSliding = false;
                 animator.SetBool("isSliding", false); // 슬라이딩 애니메이션 종료
+
+                playerAudio.Stop();
             }
 
             capsuleCollider.enabled = false;
@@ -110,15 +124,48 @@ public class PlayerController : MonoBehaviour {
 
         playerRigidbody.velocity = Vector2.zero;
         isDead = true;
+        UiManager.instance.isGameOver = true;
+    }
+    
+    // 회복
+    public void Heal(float amount)
+    {
+        currentHealth += amount;
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
     }
 
-   private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other) {
         // Dead태그 상대와 충돌 시 사망
         if (other.tag == "Dead" && !isDead)
         {
             Die();
         }
 
+        //과일
+        if (other.CompareTag("Fruit"))
+        {
+            Fruit fruit = other.GetComponent<Fruit>();
+            if (fruit != null)
+            {
+                Heal(fruit.heal);
+                Destroy(other.gameObject);
+            }
+        }
+
+        if(other.CompareTag("Monster"))
+        {
+
+            AudioSource.PlayClipAtPoint(hit, transform.position);
+
+        }
+    }
+
+    public void GetScore(int amount)
+    {
+        score += amount;
+        //삭제
+        Debug.Log("Score: " + score);
+        //삭제
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
