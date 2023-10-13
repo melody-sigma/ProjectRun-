@@ -29,8 +29,6 @@ public class PlayerController : MonoBehaviour {
     private CapsuleCollider2D capsuleCollider;
     private CircleCollider2D circleCollider;
 
-    //부딪힘
-    private bool isHit = false;
     private void Start() {
         // 초기화
         playerRigidbody = GetComponent<Rigidbody2D>();
@@ -126,11 +124,6 @@ public class PlayerController : MonoBehaviour {
         isDead = true;
         UiManager.instance.isGameOver = true;
     }
-
-    void OnDamage(int damage)
-    {
-        currentHealth -= damage;
-    }
     
     // 회복
     public void Heal(float amount)
@@ -155,23 +148,6 @@ public class PlayerController : MonoBehaviour {
                 Heal(fruit.heal);
                 Destroy(other.gameObject);
             }
-        }
-
-        if(other.GetComponent<Monster>() != null) 
-        {
-            Vector2 attackVel = Vector2.zero;
-            if(other.gameObject.transform.position.x > transform.position.x)
-            {
-                attackVel = new Vector2(-2f, 1f);
-            }
-            else
-            {
-                attackVel = new Vector2(2f, 1f);
-            }
-            playerRigidbody.AddForce(attackVel, ForceMode2D.Impulse);
-            OnDamage(other.GetComponent<Monster>().MonsterDamage);
-           
-            other.gameObject.SetActive(false);
         }
     }
 

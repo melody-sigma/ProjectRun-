@@ -14,12 +14,10 @@ public class Obstacle : MonoBehaviour
     [SerializeField] private bool isMove = false;
     [SerializeField] private float moveSpeed = 1f;
 
-
-
     private void Update()
     {
+        MoveMonster();
     }
-
 
 
 
@@ -38,7 +36,13 @@ public class Obstacle : MonoBehaviour
 
 
 
-  
+    private void MoveMonster()
+    {
+
+        if (isMove) { gameObject.transform.position += new Vector3(-1,0,gameObject.transform.position.z) * moveSpeed * Time.deltaTime; }
+        else { return; }
+
+    }
 
 
 }
