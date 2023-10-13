@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2935414216396487745}
   - component: {fileID: 7675928768039788974}
-  - component: {fileID: 8735489326692964752}
   - component: {fileID: 5304027854338609783}
   - component: {fileID: 2508720443790338132}
+  - component: {fileID: -81287423592794619}
+  - component: {fileID: -1303014447340768413}
   m_Layer: 0
   m_Name: Eagle
   m_TagString: Untagged
@@ -87,21 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8735489326692964752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1797711947089316423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 390c9d1a06007b44ea96ea48647d4a76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 25
-  isMove: 1
-  moveSpeed: 9
 --- !u!95 &5304027854338609783
 Animator:
   serializedVersion: 5
@@ -168,3 +154,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10, y: 3.6984186}
   m_EdgeRadius: 0
+--- !u!114 &-81287423592794619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797711947089316423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b677e02d85c8f2d45ac8ac83161f5b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1303014447340768413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797711947089316423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcee7b2385db78498f291c4cc227070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
